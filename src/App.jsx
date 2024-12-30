@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { CiCalendar } from "react-icons/ci";
 import moment from "moment";
 import MarketPerformance from "./components/generalPerformance";
@@ -7,6 +6,10 @@ import FearGreedCard from './components/guage';
 import { FaBitcoin, FaEthereum, FaDog } from "react-icons/fa";
 import CryptoCard from "./components/cryptoCard"
 import DominationCard from './components/progressiveBar'; 
+import PricesCard from './components/priceCard';
+import { GiGoldBar } from "react-icons/gi";
+import { SiFsecure } from "react-icons/si";
+
 
   const gainers = [
     { icon: FaBitcoin, name: "BSV", value: "$0.00003426", percentage: 7.5 },
@@ -29,21 +32,33 @@ import DominationCard from './components/progressiveBar';
      altcoins: { value: 27.4, percentage: -7.5, positive: false },
      other: { value: 15.9, percentage: -7.5, positive: false },
    };
+
+
+    const pricesData = [
+      {
+        icon: FaBitcoin,
+        label: "Market Cap",
+        price: "$27,364.48",
+      },
+      {
+        icon: FaEthereum,
+        label: "ETH",
+        price: "$27,364.48",
+      },
+      {
+        icon: GiGoldBar,
+        label: "Gold",
+        price: "$27,364.48",
+      },
+      {
+        icon: SiFsecure,
+        label: "S&P 500",
+        price: "$27,364.48",
+      },
+    ];
 const Dashboard = () => {
 
-  const chartOptions = {
-    chart: {
-      type: "line",
-    },
-    title: {
-      text: "General performance of market",
-    },
-    series: [
-      {
-        data: [1, 2, 3, 4, 5], // Replace with actual data
-      },
-    ],
-  };
+
 
   return (
     <div className="flex flex-col  !bg-base_gray w-screen h-full p-4">
@@ -78,6 +93,8 @@ const Dashboard = () => {
           other={DominationCardMock.other}
         />
       </div>
+      <div className="mt-4"></div>
+      <PricesCard prices={pricesData} />
     </div>
   );
 };
