@@ -1,9 +1,46 @@
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
 import { useMemo } from "react";
+import { CiCalendar } from "react-icons/ci";
+import moment from "moment";
+import MarketPerformance from "./components/generalPerformance";
+import AltseasonIndexCard from './components/altSeason';
+import FearGreedCard from './components/guage';
+
+const mockData = {
+  marketPerformance: {
+    bitcoinPrice: 27364.48,
+    bitcoinChange: -7.5,
+    altcoinIndex: 75,
+    fearAndGreedIndex: 70,
+  },
+  topGainers: [
+    { name: "BSV", price: 0.00003426, change: 7.5 },
+    { name: "SPX", price: 5.3, change: 7.5 },
+    { name: "RUNE", price: 0.03426, change: 7.5 },
+    { name: "XEC", price: 0.1418, change: 7.5 },
+    { name: "DOGE", price: 0.1418, change: 7.5 },
+  ],
+  topLosers: [
+    { name: "BSV", price: 0.00003426, change: -7.5 },
+    { name: "SPX", price: 5.3, change: -7.5 },
+    { name: "RUNE", price: 0.03426, change: -7.5 },
+    { name: "XEC", price: 0.1418, change: -7.5 },
+    { name: "DOGE", price: 0.1418, change: -7.5 },
+  ],
+  dominations: {
+    bitcoin: 50.5,
+    altcoins: 27.4,
+    other: 15.9,
+  },
+  prices: [
+    { name: "Bitcoin Market Cap", value: 27364.48 },
+    { name: "ETH", value: 27364.48 },
+    { name: "Gold", value: 27364.48 },
+    { name: "S&P 500", value: 27364.48 },
+  ],
+};
 
 const Dashboard = () => {
-  const marketData = useMemo(() => [], []); // Use memoization for better performance
+  const marketData = useMemo(() => mockData, []); // Use memoization for better performance
 
   const chartOptions = {
     chart: {
@@ -20,103 +57,24 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {/* Market Performance Section */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-2">Market Performance</h2>
-        <div className="flex items-center">
-          <p className="text-2xl font-semibold mr-2">
-            ${marketData.marketPerformance.bitcoinPrice}
-          </p>
-          <span
-            className={`text-sm ${
-              marketData.marketPerformance.bitcoinChange < 0
-                ? "text-red-500"
-                : "text-green-500"
-            }`}
-          >
-            {marketData.marketPerformance.bitcoinChange}%
+    <div className="flex flex-col  !bg-base_gray w-screen h-screen p-4">
+      <div className="flex justify-between  p-4  h-fit w-full">
+        <p className="font-semibold text-gray-800 text-lg h-fit">
+          Daily Market Overview
+        </p>
+        <p className=" text-gray-800  justify-center items-center flex h-fit">
+          <CiCalendar className="text-lg font-semibold" />
+          <span className="text-lg ml-2 font-semibold">
+            {moment().format("DD MMM YYYY")}
           </span>
-        </div>
-        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-      </div>
-
-      {/* Altseason Index */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-2">Altseason Index</h2>
-        <p className="text-2xl font-semibold">
-          {marketData.marketPerformance.altcoinIndex}
         </p>
       </div>
 
-      {/* Fear and Greed Index */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-2">Fear and Greed Index</h2>
-        <p className="text-2xl font-semibold">
-          {marketData.marketPerformance.fearAndGreedIndex}
-        </p>
-      </div>
+      <MarketPerformance />
 
-      {/* Top Gainers */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-2">Top Gainers</h2>
-        <ul>
-          {marketData.topGainers.map((coin) => (
-            <li key={coin.name} className="flex justify-between items-center">
-              <span>{coin.name}</span>
-              <span className="text-green-500">
-                ${coin.price} ({coin.change}%)
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Top Losers */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-2">Top Losers</h2>
-        <ul>
-          {marketData.topLosers.map((coin) => (
-            <li key={coin.name} className="flex justify-between items-center">
-              <span>{coin.name}</span>
-              <span className="text-red-500">
-                ${coin.price} ({coin.change}%)
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Domination */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-2">Domination</h2>
-        <div className="flex">
-          <div className="flex items-center">
-            <div className="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
-            <span>Bitcoin: {marketData.dominations.bitcoin}%</span>
-          </div>
-          <div className="flex items-center ml-4">
-            <div className="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
-            <span>Altcoins: {marketData.dominations.altcoins}%</span>
-          </div>
-          <div className="flex items-center ml-4">
-            <div className="w-4 h-4 rounded-full bg-gray-500 mr-2"></div>
-            <span>Other: {marketData.dominations.other}%</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Prices */}
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-2">Prices</h2>
-        <ul>
-          {marketData.prices.map((price) => (
-            <li key={price.name} className="flex justify-between items-center">
-              <span>{price.name}</span>
-              <span>${price.value}</span>
-            </li>
-          ))}
-        </ul>
+      <div className="grid grid-cols-2 gap-4 mt-4">
+        <AltseasonIndexCard  />
+        {/* <FearGreedCard value={70} max={100} /> */}
       </div>
     </div>
   );
