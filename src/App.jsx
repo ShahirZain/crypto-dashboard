@@ -4,43 +4,32 @@ import moment from "moment";
 import MarketPerformance from "./components/generalPerformance";
 import AltseasonIndexCard from './components/altSeason';
 import FearGreedCard from './components/guage';
+import { FaBitcoin, FaEthereum, FaDog } from "react-icons/fa";
+import CryptoCard from "./components/cryptoCard"
+import DominationCard from './components/progressiveBar'; 
 
-const mockData = {
-  marketPerformance: {
-    bitcoinPrice: 27364.48,
-    bitcoinChange: -7.5,
-    altcoinIndex: 75,
-    fearAndGreedIndex: 70,
-  },
-  topGainers: [
-    { name: "BSV", price: 0.00003426, change: 7.5 },
-    { name: "SPX", price: 5.3, change: 7.5 },
-    { name: "RUNE", price: 0.03426, change: 7.5 },
-    { name: "XEC", price: 0.1418, change: 7.5 },
-    { name: "DOGE", price: 0.1418, change: 7.5 },
-  ],
-  topLosers: [
-    { name: "BSV", price: 0.00003426, change: -7.5 },
-    { name: "SPX", price: 5.3, change: -7.5 },
-    { name: "RUNE", price: 0.03426, change: -7.5 },
-    { name: "XEC", price: 0.1418, change: -7.5 },
-    { name: "DOGE", price: 0.1418, change: -7.5 },
-  ],
-  dominations: {
-    bitcoin: 50.5,
-    altcoins: 27.4,
-    other: 15.9,
-  },
-  prices: [
-    { name: "Bitcoin Market Cap", value: 27364.48 },
-    { name: "ETH", value: 27364.48 },
-    { name: "Gold", value: 27364.48 },
-    { name: "S&P 500", value: 27364.48 },
-  ],
-};
+  const gainers = [
+    { icon: FaBitcoin, name: "BSV", value: "$0.00003426", percentage: 7.5 },
+    { icon: FaEthereum, name: "SPX", value: "$0.8684", percentage: 7.5 },
+    { icon: FaBitcoin, name: "RUNE", value: "$5.30", percentage: 7.5 },
+    { icon: FaDog, name: "XEC", value: "$0.03426", percentage: 7.5 },
+    { icon: FaDog, name: "DOGE", value: "$0.1418", percentage: 7.5 },
+  ];
 
+  const losers = [
+    { icon: FaBitcoin, name: "BSV", value: "$0.00003426", percentage: -7.5 },
+    { icon: FaEthereum, name: "SPX", value: "$0.8684", percentage: -7.5 },
+    { icon: FaBitcoin, name: "RUNE", value: "$5.30", percentage: -7.5 },
+    { icon: FaDog, name: "XEC", value: "$0.03426", percentage: -7.5 },
+    { icon: FaDog, name: "DOGE", value: "$0.1418", percentage: -7.5 },
+  ];
+
+   const DominationCardMock = {
+     bitcoin: { value: 50.5, percentage: 7.5, positive: true },
+     altcoins: { value: 27.4, percentage: -7.5, positive: false },
+     other: { value: 15.9, percentage: -7.5, positive: false },
+   };
 const Dashboard = () => {
-  const marketData = useMemo(() => mockData, []); // Use memoization for better performance
 
   const chartOptions = {
     chart: {
@@ -57,7 +46,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col  !bg-base_gray w-screen h-screen p-4">
+    <div className="flex flex-col  !bg-base_gray w-screen h-full p-4">
       <div className="flex justify-between  p-4  h-fit w-full">
         <p className="font-semibold text-gray-800 text-lg h-fit">
           Daily Market Overview
@@ -73,8 +62,21 @@ const Dashboard = () => {
       <MarketPerformance />
 
       <div className="grid grid-cols-2 gap-4 mt-4">
-        <AltseasonIndexCard  />
+        <AltseasonIndexCard />
         <FearGreedCard value={50} max={100} />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mt-4">
+        <CryptoCard title="Top Gainers" data={gainers} positive={true} />
+        <CryptoCard title="Top Losers" data={losers} positive={false} />
+      </div>
+
+      <div className="grid grid-cols-2 place-items-center mt-4">
+        <DominationCard
+          bitcoin={DominationCardMock.bitcoin}
+          altcoins={DominationCardMock.altcoins}
+          other={DominationCardMock.other}
+        />
       </div>
     </div>
   );
