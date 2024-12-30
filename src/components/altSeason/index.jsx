@@ -6,7 +6,7 @@ const AltseasonIndex = ({ values = [100, 100, 80] }) => {
   const max = Math.max(...values);
 
   return (
-    <div className="  p-6 bg-white rounded-lg shadow-lg flex flex-col w-full">
+    <div className="  p-6 bg-white rounded-lg shadow-lg flex flex-col w-full lg:justify-around md:justify-around">
       <div className="flex justify-between items-start mb-4">
         <div className="flex flex-col">
           <h2 className="text-xl font-semibold text-gray-500">
