@@ -1,168 +1,89 @@
-// import Highcharts from "highcharts";
-// import HighchartsReact from "highcharts-react-official";
-// // import SolidGaugeModule from "highcharts/modules/solid-gauge";
-// // import HighchartsSolidGauge from "highcharts/modules/solid-gauge";
-//   // SolidGaugeModule(Highcharts);
-// const FearGreedCard = ({ value, max }) => {
-//   const options = {
-//     chart: {
-//       type: "gauge",
-//       height: 200,
-//       backgroundColor: "transparent",
-//     },
-//     title: {
-//       text: null,
-//     },
-//     pane: {
-//       startAngle: -120,
-//       endAngle: 120,
-//       background: [
-//         {
-//           outerRadius: "100%",
-//           innerRadius: "85%",
-//           shape: "arc",
-//           backgroundColor: "#ef4444",
-//         },
-//         {
-//           outerRadius: "85%",
-//           innerRadius: "70%",
-//           shape: "arc",
-//           backgroundColor: "#f59e0b",
-//         },
-//         {
-//           outerRadius: "70%",
-//           innerRadius: "55%",
-//           shape: "arc",
-//           backgroundColor: "#e5e7eb",
-//         },
-//       ],
-//     },
-//     yAxis: {
-//       min: 0,
-//       max,
-//       stops: [
-//         [0.3, "#ef4444"],
-//         [0.6, "#f59e0b"],
-//         [1, "#10b981"], // Tailwind green-500
-//       ],
-//       lineWidth: 0,
-//       tickWidth: 0,
-//       minorTickInterval: null,
-//     },
-//     series: [
-//       {
-//         name: "Greed",
-//         data: [value],
-//         tooltip: {
-//           valueSuffix: " index",
-//         },
-//       },
-//     ],
-//     tooltip: {
-//       enabled: false,
-//     },
-//     credits: {
-//       enabled: false,
-//     },
-//   };
+import React from "react";
 
-//   return (
-//     <div className="bg-white rounded-lg shadow p-4">
-//       <div className="flex justify-between">
-//         <h3 className="text-gray-700 font-semibold">Fear and greed index</h3>
-//         <div className="text-green-500 font-medium text-sm">▲ 7.5%</div>
-//       </div>
-//       <div className="text-center mt-4">
-//         <div className="text-4xl font-bold">{value}</div>
-//         <div className="text-gray-500 text-lg">Greed</div>
-//       </div>
-//       <HighchartsReact highcharts={Highcharts} options={options} />
-//     </div>
-//   );
-// };
+const FearGreedGauge = ({ value = 70, change = 7.5 }) => {
+  // Map value to degrees (0 to 180 for half-circle)
+  const calculateArc = (start, end) => {
+    const startAngle = (start / 100) * 180;
+    const endAngle = (end / 100) * 180;
 
-// export default FearGreedCard;
+    const startX = 100 + 90 * Math.cos((startAngle - 180) * (Math.PI / 180));
+    const startY = 100 + 90 * Math.sin((startAngle - 180) * (Math.PI / 180));
 
+    const endX = 100 + 90 * Math.cos((endAngle - 180) * (Math.PI / 180));
+    const endY = 100 + 90 * Math.sin((endAngle - 180) * (Math.PI / 180));
 
-import React, { useState, useEffect } from "react";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
+    const largeArcFlag = endAngle - startAngle > 90 ? 1 : 0;
 
-const FearAndGreedIndex = () => {
-  const [indexValue, setIndexValue] = useState(70); // Initial value from the image
-
-  useEffect(() => {
-    // Simulate fetching data from an API (replace with actual API call)
-    const fetchData = async () => {
-      const response = await fetch("/api/fear-and-greed-index"); // Replace with your API endpoint
-      const data = await response.json();
-      setIndexValue(data.index);
-    };
-
-    fetchData();
-  }, []);
-
-  const options = {
-    chart: {
-      type: "gauge",
-      plotBackgroundColor: null,
-      plotBorderWidth: 0,
-      plotShadow: false,
-    },
-    title: {
-      text: "Fear and Greed Index",
-    },
-    pane: {
-      startAngle: -90,
-      endAngle: 90,
-      background: [
-        {
-          backgroundColor: {
-            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-            stops: [
-              [0, "#DF5353"], // Red for Fear
-              [0.3, "#DF5353"],
-              [0.3, "#FFC107"], // Yellow for Caution
-              [0.7, "#FFC107"],
-              [0.7, "#50B432"], // Green for Greed
-              [1, "#50B432"],
-            ],
-          },
-          borderWidth: 0,
-          outerRadius: "100%",
-        },
-      ],
-    },
-    yAxis: {
-      min: 0,
-      max: 100,
-      title: {
-        text: null,
-      },
-      labels: {
-        enabled: false,
-      },
-    },
-    plotOptions: {
-      gauge: {
-        dataLabels: {
-          enabled: true,
-          format: '<span style="font-size: 2em">{y}</span>',
-        },
-        dial: {
-          radius: "80%",
-        },
-      },
-    },
-    series: [
-      {
-        name: "Fear and Greed",
-        data: [indexValue],
-      },
-    ],
+    return `M ${startX} ${startY} A 90 90 0 ${largeArcFlag} 1 ${endX} ${endY}`;
   };
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  const renderCircleEnd = (angle) => {
+    const x = 100 + 90 * Math.cos((angle - 180) * (Math.PI / 180));
+    const y = 100 + 90 * Math.sin((angle - 180) * (Math.PI / 180));
+    return <circle cx={x} cy={y} r="8" fill="#10b981" />;
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center w-full  bg-white rounded-lg shadow-lg p-6 relative">
+      <div className="flex justify-between w-full mb-4">
+        <h2 className="text-xl font-semibold text-gray-700">
+          Fear and greed index
+        </h2>
+        <div className="flex flex-col items-center text-green-500">
+          <div className="text-gray-500">Last 24h</div>
+          <div className="flex items-center mt-1">
+            <span className="mr-1">▲</span>
+            <span className="font-medium">{change}%</span>
+          </div>
+        </div>
+      </div>
+      <div className="relative w-full">
+        <svg
+          className="w-full h-auto max-w-[400px] mx-auto"
+          viewBox="0 0 200 120"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <path
+            d="M 10 100 A 90 90 0 1 1 190 100"
+            fill="none"
+            // stroke="#e5e7eb"
+            strokeWidth="20"
+          />
+          {/* Red Section */}
+          <path
+            d={calculateArc(0, 30)}
+            fill="none"
+            stroke="#ef4444"
+            strokeWidth="16"
+            strokeLinecap="round"
+          />
+          {/* Orange Section */}
+          <path
+            d={calculateArc(35, 65)}
+            fill="none"
+            stroke="#f59e0b"
+            strokeWidth="16"
+            strokeLinecap="round"
+          />
+          {/* Green Section */}
+          <path
+            d={calculateArc(70, 85)}
+            fill="none"
+            stroke="#10b981"
+            strokeWidth="16"
+            strokeLinecap="round"
+          />
+          {renderCircleEnd((90 / 100) * 180)}
+        </svg>
+        <div className="absolute top-16 left-0 right-0 flex flex-col items-center">
+          <p className="text-lg font-medium text-gray-600">
+            {value > 50 ? "Greed" : "Fear"}
+          </p>
+          <p className="text-5xl font-bold text-gray-900">{value}</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default FearAndGreedIndex;
+export default FearGreedGauge;

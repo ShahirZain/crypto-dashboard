@@ -74,7 +74,7 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-2 gap-4 mt-4">
         <AltseasonIndexCard  />
-        {/* <FearGreedCard value={70} max={100} /> */}
+        <FearGreedCard value={50} max={100} />
       </div>
     </div>
   );
