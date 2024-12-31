@@ -1,11 +1,11 @@
 import React from "react";
 
 // Single Price Row Component
-const PriceRow = ({ icon: Icon, label, price }) => {
+const PriceRow = ({ icon: Icon, label, price , variant}) => {
   return (
     <div className="flex flex-col items-center space-y-2">
       <div className="flex items-center space-x-2">
-        <Icon className="w-8 h-8 text-yellow-500" />
+        <Icon className="w-8 h-8 text-yellow-500" variant={variant} />
         <span className="text-gray-600 font-medium">{label}</span>
       </div>
       <div className="text-3xl font-bold text-gray-500">{price}</div>
@@ -26,7 +26,12 @@ const PricesCard = ({ prices }) => {
               index !== prices.length - 1 ? "sm:border-r-0 md:border-r" : ""
             } border-gray-200 pr-6`}
           >
-            <PriceRow icon={item.icon} label={item.label} price={item.price} />
+            <PriceRow
+              icon={item.icon}
+              label={item.label}
+              price={item.price}
+              variant={item.variant}
+            />
           </div>
         ))}
       </div>

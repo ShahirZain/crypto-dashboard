@@ -1,7 +1,7 @@
 import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { FaBitcoin } from "react-icons/fa";
+import { TokenIcon } from "@web3icons/react";
 import { SiBlockchaindotcom } from "react-icons/si";
 import { BsCircleFill } from "react-icons/bs";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
@@ -59,11 +59,11 @@ const ProgressBar = ({ bitcoin, altcoins, other }) => {
 };
 
 // Single Crypto Domination Row
-const DominationRow = ({ icon: Icon, label, value, percentage, positive }) => {
+const DominationRow = ({ icon: Icon, label, value, percentage, positive, symbol, variant }) => {
   return (
     <div className="flex flex-col items-center ">
       <div className="flex items-center space-x-2">
-        <Icon className="w-6 h-6 text-yellow-500" />
+        <Icon className="w-6 h-6 text-yellow-500" symbol={symbol} variant={variant} />
         <span className="text-gray-700 font-medium">{label}</span>
       </div>
       <div className="text-3xl font-bold text-gray-400 mt-4">{value}%</div>
@@ -86,18 +86,22 @@ const DominationCard = ({ bitcoin, altcoins, other }) => {
       <h2 className="text-xl font-semibold mb-4 text-gray-500">Domination</h2>
       <div className="flex justify-around mb-6">
         <DominationRow
-          icon={FaBitcoin}
+          icon={TokenIcon}
           label="Bitcoin"
           value={bitcoin.value}
           percentage={bitcoin.percentage}
           positive={bitcoin.positive}
+          symbol="btg"
+          variant="branded"
         />
         <DominationRow
-          icon={SiBlockchaindotcom}
+          icon={TokenIcon}
           label="Altcoins"
           value={altcoins.value}
           percentage={altcoins.percentage}
           positive={altcoins.positive}
+          symbol="alu"
+          variant="branded"
         />
         <DominationRow
           icon={BsCircleFill}

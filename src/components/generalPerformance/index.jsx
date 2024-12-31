@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { CiBitcoin } from "react-icons/ci";
+import { TokenIcon } from "@web3icons/react";
 import MarketPerformanceChart from "../lineChart";
 
 // Wrapper Component for Layout, Icon, and Customization
@@ -12,7 +12,11 @@ const ChartWrapper = ({ icon: Icon, title, subtitle, data }) => {
       <div className="absolute top-5 right-6 flex items-center space-x-4">
         <div className="relative flex flex-col items-center p-4">
           <div className="flex items-center justify-end w-full">
-            <Icon className="w-8 h-8 text-yellow-500" />
+            <Icon
+              className="w-8 h-8 text-yellow-500"
+              symbol="btg"
+              variant="branded"
+            />
           </div>
           <div className="flex items-center space-x-1 mt-2">
             <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
@@ -64,7 +68,7 @@ const MarketPerformance = () => {
 
   return (
     <ChartWrapper
-      icon={CiBitcoin}
+      icon={TokenIcon}
       title="Bitcoin"
       subtitle={chartData.subtitle}
       data={chartData}

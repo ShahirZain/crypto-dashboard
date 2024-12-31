@@ -9,21 +9,90 @@ import DominationCard from "./components/progressiveBar";
 import PricesCard from "./components/priceCard";
 import { GiGoldBar } from "react-icons/gi";
 import { SiFsecure } from "react-icons/si";
+import {
+  TokenBSV,
+  TokenETH,
+  TokenRUNE,
+  TokenXEC,
+  TokenOMNOM,
+  TokenPAXG,
+  TokenDSETH,
+} from "@web3icons/react";
 
 const gainers = [
-  { icon: FaBitcoin, name: "BSV", value: "$0.00003426", percentage: 7.5 },
-  { icon: FaEthereum, name: "SPX", value: "$0.8684", percentage: 7.5 },
-  { icon: FaBitcoin, name: "RUNE", value: "$5.30", percentage: 7.5 },
-  { icon: FaDog, name: "XEC", value: "$0.03426", percentage: 7.5 },
-  { icon: FaDog, name: "DOGE", value: "$0.1418", percentage: 7.5 },
+  {
+    icon: TokenBSV,
+    name: "BSV",
+    value: "$0.00003426",
+    percentage: 7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenETH,
+    name: "SPX",
+    value: "$0.8684",
+    percentage: 7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenRUNE,
+    name: "RUNE",
+    value: "$5.30",
+    percentage: 7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenXEC,
+    name: "XEC",
+    value: "$0.03426",
+    percentage: 7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenOMNOM,
+    name: "DOGE",
+    value: "$0.1418",
+    percentage: 7.5,
+    variant: "branded",
+  },
 ];
 
 const losers = [
-  { icon: FaBitcoin, name: "BSV", value: "$0.00003426", percentage: -7.5 },
-  { icon: FaEthereum, name: "SPX", value: "$0.8684", percentage: -7.5 },
-  { icon: FaBitcoin, name: "RUNE", value: "$5.30", percentage: -7.5 },
-  { icon: FaDog, name: "XEC", value: "$0.03426", percentage: -7.5 },
-  { icon: FaDog, name: "DOGE", value: "$0.1418", percentage: -7.5 },
+  {
+    icon: TokenBSV,
+    name: "BSV",
+    value: "$0.00003426",
+    percentage: -7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenETH,
+    name: "SPX",
+    value: "$0.8684",
+    percentage: -7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenRUNE,
+    name: "RUNE",
+    value: "$5.30",
+    percentage: -7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenXEC,
+    name: "XEC",
+    value: "$0.03426",
+    percentage: -7.5,
+    variant: "branded",
+  },
+  {
+    icon: TokenOMNOM,
+    name: "DOGE",
+    value: "$0.1418",
+    percentage: -7.5,
+    variant: "branded",
+  },
 ];
 
 const DominationCardMock = {
@@ -34,24 +103,28 @@ const DominationCardMock = {
 
 const pricesData = [
   {
-    icon: FaBitcoin,
+    icon: TokenBSV,
     label: "Market Cap",
     price: "$27,364.48",
+    variant: "branded",
   },
   {
-    icon: FaEthereum,
+    icon: TokenETH,
     label: "ETH",
     price: "$27,364.48",
+    variant: "branded",
   },
   {
-    icon: GiGoldBar,
+    icon: TokenPAXG,
     label: "Gold",
     price: "$27,364.48",
+    variant: "branded",
   },
   {
-    icon: SiFsecure,
+    icon: TokenDSETH,
     label: "S&P 500",
     price: "$27,364.48",
+    variant: "branded",
   },
 ];
 

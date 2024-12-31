@@ -51,11 +51,11 @@ const MiniChart = ({ positive }) => {
 };
 
 // Single Row Component
-const CryptoRow = ({ icon: Icon, name, value, percentage, positive }) => {
+const CryptoRow = ({ icon: Icon, name, value, percentage, positive , variant}) => {
   return (
     <div className="flex items-center justify-between py-2 border-b-2 border-gray-200 mb-8">
       <div className="flex flex-col items-center ">
-        <Icon className="w-10 h-10 text-yellow-500" />
+        <Icon className="w-10 h-10 text-yellow-500" variant={variant} />
         <div className="text-gray-500 text-lg mt-2 font-semibold">{name}</div>
       </div>
       <div className={` ${positive ? "text-green-500" : "text-red-500"}`}>
@@ -84,6 +84,7 @@ const CryptoCard = ({ title, data, positive }) => {
           value={item.value}
           percentage={item.percentage}
           positive={positive}
+          variant={item.variant}
         />
       ))}
     </div>
