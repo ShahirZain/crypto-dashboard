@@ -9,15 +9,15 @@ const AltseasonIndex = ({ altSeason, values = [100, 100, 80] }) => {
     <div className="p-4 bg-white rounded-lg shadow-lg flex flex-col w-full max-h-[133px] justify-between">
       <div className="flex justify-between items-start mb-2">
         <div className="flex flex-col">
-          <h2 className="text-lg font-medium text-gray-500 font-sans">
+          <h2 className="text-xs leading-4 font-semibold text-gray-500 font-sans">
             Altseason Index
           </h2>
-          <span className="text-2xl font-bold text-gray-800">
+          <span className="text-base font-semibold text-gray-800">
             {altSeason}
-            <span className="text-gray-400 text-base ml-1">/ 100</span>
+            <span className="text-gray-400  ml-1 text-sm font-normal leading-4">/ 100</span>
           </span>
         </div>
-        <div className="text-gray-400 text-sm mt-1">Last 24h</div>
+        <div className="text-gray-400 text-xs mt-1 font-normal leading-4">Last 24h</div>
       </div>
 
       <div className="flex items-center gap-1 mt-2">

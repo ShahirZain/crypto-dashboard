@@ -75,7 +75,7 @@ const DominationCardMock = {
       (((MockMarketData.market_domination.total_market_cap.current - MockMarketData
         .market_domination.btc.current) /
         MockMarketData.market_domination.total_market_cap.current) *
-      100).toFixed(2),
+      100).toFixed(1),
     positive: MockMarketData.market_domination.btc.change_24h > 0,
   },
   altcoins: {
@@ -83,7 +83,7 @@ const DominationCardMock = {
     percentage:
       ((( MockMarketData.market_domination.total_market_cap.current -  MockMarketData.market_domination.altcoins.current) /
         MockMarketData.market_domination.total_market_cap.current) *
-      100).toFixed(2),
+      100).toFixed(1),
     positive: MockMarketData.market_domination.altcoins.change_24h > 0,
   },
   other: {
@@ -91,7 +91,7 @@ const DominationCardMock = {
     percentage:
       (( (MockMarketData.market_domination.total_market_cap.current - MockMarketData.market_domination.other.current) /
         MockMarketData.market_domination.total_market_cap.current) *
-      100).toFixed(2), // Assuming no change for 'other' in this case
+      100).toFixed(1), // Assuming no change for 'other' in this case
     positive: false,
   },
 };
@@ -120,7 +120,7 @@ const Dashboard = () => {
       <div className="max-w-[595px] mx-auto">
         {/* Header */}
         <div className="flex justify-between p-2 w-full">
-          <p className="font-semibold text-gray-800 text-xl">
+          <p className="leading-4 text-gray-800 text-xl font-semibold">
             Daily Market Overview
           </p>
           <p className="text-gray-800 flex items-center text-sm">

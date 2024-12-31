@@ -69,15 +69,19 @@ const CryptoRow = ({
     <div className="flex items-center justify-between py-2 border-b border-gray-200 mb-4">
       <div className="flex flex-col items-center">
         <Icon className="w-8 h-8 text-yellow-500" variant={variant} />
-        <div className="text-gray-500 text-sm mt-1 font-medium">{name}</div>
+        <div className="text-[#475467] font-sans text-sm mt-1 font-semibold leading-4">
+          {name}
+        </div>
       </div>
       <div
         className={` ${
           positive ? "text-green-500" : "text-red-500"
         } text-right`}
       >
-        <p className="font-semibold text-gray-800 text-base">{value}</p>
-        <div className="flex items-center justify-end text-sm">
+        <p className="font-semibold text-[#182230] leading-5 text-base font-sans">
+          {value}
+        </p>
+        <div className="flex items-center justify-end  leading-4 font-semibold text-sm font-sans">
           {positive ? "▲" : "▼"} {percentage}%
         </div>
       </div>
@@ -91,7 +95,9 @@ const CryptoCard = ({ title, data, positive }) => {
   return (
     <div className="bg-white rounded-lg shadow p-4 max-h-[1130px] overflow-y-auto">
       <div className="flex justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-500">{title}</h2>
+        <h2 className="text-md leading-4 font-semibold text-[#667085]">
+          {title}
+        </h2>
       </div>
       {data.map((item, index) => (
         <CryptoRow

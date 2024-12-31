@@ -73,16 +73,16 @@ const DominationRow = ({
           symbol={symbol}
           variant={variant}
         />
-        <span className="text-gray-700 font-bold text-sm">{label}</span>
+        <span className="text-gray-700 font-bold text-sm leading-4">{label}</span>
       </div>
-      <div className="text-lg font-bold text-gray-800">{value}%</div>
+      <div className="text-xl leading-9 font-bold text-gray-800">{value}%</div>
       <div
         className={`flex items-center text-xs ${
           positive ? "text-green-500" : "text-red-500"
         }`}
       >
         {positive ? "▲" : "▼"}
-        <span className="ml-1">{percentage}%</span>
+        <span className="ml-1 font-semibold text-xs leading-4">{percentage}%</span>
       </div>
     </div>
   );
@@ -92,7 +92,7 @@ const DominationRow = ({
 const DominationCard = ({ bitcoin, altcoins, other }) => {
   return (
     <div className="bg-white rounded-lg shadow p-2 w-full max-h-[165px]">
-      <h2 className="text-sm font-semibold mb-2 text-gray-500 text-left">
+      <h2 className="text-sm font-semibold mb-2 text-gray-500 text-left leading-4 p-2">
         Domination
       </h2>
       <div className="flex justify-around items-center mb-2">
