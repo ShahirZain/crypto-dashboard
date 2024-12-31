@@ -112,7 +112,6 @@ const marketPerformanceValues = Object.fromEntries(
   Object.entries(MockMarketData.market_performance.top_pairs).map(([key, values]) => [key, {data:values.flat(), name:key}])
 );
 const Dashboard = () => {
-console.log("🚀 ~ flattenedObject:", Object.values(marketPerformanceValues));
 
   return (
     <div className="flex flex-col !bg-base_gray w-screen h-full p-4">
