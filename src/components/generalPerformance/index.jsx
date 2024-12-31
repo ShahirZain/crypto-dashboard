@@ -40,7 +40,7 @@ const MarketPerformance = ({ BTC, marketPerformanceValues }) => {
   // Customize title and subtitle as HTML
   const chartData = {
     title: `<strong style="font-size:16px;">Bitcoin Market Performance</strong>`,
-    subtitle: `<span style="font-size:14px;"><b>$${BTC.current_price}</b></span>`,
+    subtitle: `<span style="font-size:20px;"><b>$${BTC.current_price}</b></span>`,
     percentageChange,
     series: Object.values(marketPerformanceValues),
   };

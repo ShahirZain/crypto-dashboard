@@ -73,9 +73,9 @@ const DominationRow = ({
           symbol={symbol}
           variant={variant}
         />
-        <span className="text-gray-700 font-medium text-xs">{label}</span>
+        <span className="text-gray-700 font-bold text-sm">{label}</span>
       </div>
-      <div className="text-lg font-bold text-gray-400">{value}%</div>
+      <div className="text-lg font-bold text-gray-800">{value}%</div>
       <div
         className={`flex items-center text-xs ${
           positive ? "text-green-500" : "text-red-500"

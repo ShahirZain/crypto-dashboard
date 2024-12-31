@@ -18,7 +18,7 @@ const MarketPerformanceChart = ({ data }) => {
       },
     },
     subtitle: {
-      text: `${data.subtitle} <span style="color: #16a34a;">▲ ${data.percentageChange}%</span>`,
+      text: `${data.subtitle} <span style="color: #16a34a; font-size:14px;"> ▲ ${data.percentageChange}%</span>`,
       align: "left",
       useHTML: true,
       style: {
