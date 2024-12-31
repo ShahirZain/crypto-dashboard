@@ -27,11 +27,11 @@ const FearGreedGauge = ({ value, prev, change = 7.5 }) => {
   return (
     <div className="flex flex-col items-center justify-center w-full  bg-white rounded-lg shadow-lg p-6 relative">
       <div className="flex justify-between w-full mb-4">
-        <h2 className="text-xl font-semibold text-gray-700">
+        <h2 className="text-2xl font-semibold text-gray-500">
           Fear and greed index
         </h2>
         <div className="flex flex-col items-center text-green-500">
-          <div className="text-gray-500">Last 24h</div>
+          <div className="text-gray-500 text-xl">Last 24h</div>
           <div className="flex items-center mt-1">
             <span className="mr-1">▲</span>
             <span className="font-medium">{changeInPercentage}%</span>

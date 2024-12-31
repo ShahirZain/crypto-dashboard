@@ -54,7 +54,7 @@ function getIconForSymbol(symbol) {
 const gainers = MockMarketData.top_coins.top_gainers.map((gainer) => ({
   icon: getIconForSymbol(gainer.symbol),
   name: gainer.symbol.replace("USDT", ""), // Remove "USDT" from symbol
-  value: `$${gainer.price.toFixed(4)}`,
+  value: `$${gainer.price.toFixed(8)}`,
   percentage: gainer.change,
   variant: "branded",
 
@@ -63,7 +63,7 @@ const gainers = MockMarketData.top_coins.top_gainers.map((gainer) => ({
 const losers = MockMarketData.top_coins.top_losers.map((loser) => ({
   icon: getIconForSymbol(loser.symbol),
   name: loser.symbol.replace("USDT", ""),
-  value: `$${loser.price.toFixed(4)}`,
+  value: `$${loser.price.toFixed(8)}`,
   percentage: loser.change.toFixed(2),
   variant: "branded",
 }));
@@ -72,25 +72,26 @@ const DominationCardMock = {
   bitcoin: {
     value: MockMarketData.market_domination.btc.current.toFixed(2),
     percentage:
-      ((MockMarketData.market_domination.btc.current /
+      (((MockMarketData.market_domination.total_market_cap.current - MockMarketData
+        .market_domination.btc.current) /
         MockMarketData.market_domination.total_market_cap.current) *
-      100),
+      100).toFixed(2),
     positive: MockMarketData.market_domination.btc.change_24h > 0,
   },
   altcoins: {
     value: MockMarketData.market_domination.altcoins.current.toFixed(2),
     percentage:
-      ((MockMarketData.market_domination.altcoins.current /
+      ((( MockMarketData.market_domination.total_market_cap.current -  MockMarketData.market_domination.altcoins.current) /
         MockMarketData.market_domination.total_market_cap.current) *
-      100),
+      100).toFixed(2),
     positive: MockMarketData.market_domination.altcoins.change_24h > 0,
   },
   other: {
     value: MockMarketData.market_domination.other.current.toFixed(2),
     percentage:
-      ((MockMarketData.market_domination.other.current /
+      (( (MockMarketData.market_domination.total_market_cap.current - MockMarketData.market_domination.other.current) /
         MockMarketData.market_domination.total_market_cap.current) *
-      100), // Assuming no change for 'other' in this case
+      100).toFixed(2), // Assuming no change for 'other' in this case
     positive: false,
   },
 };
@@ -114,9 +115,9 @@ const marketPerformanceValues = Object.fromEntries(
 const Dashboard = () => {
 
   return (
-    <div className="flex flex-col !bg-base_gray w-screen h-full p-4">
+    <div className="flex flex-col !bg-base_gray w-screen h-full p-4 !font-sans">
       <div className="flex justify-between p-4 w-full">
-        <p className="font-semibold text-gray-800 text-lg">
+        <p className="font-semibold text-gray-800 text-2xl">
           Daily Market Overview
         </p>
         <p className="text-gray-800 flex items-center">

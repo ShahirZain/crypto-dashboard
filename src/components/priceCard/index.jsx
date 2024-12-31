@@ -8,7 +8,7 @@ const PriceRow = ({ icon: Icon, label, price , variant}) => {
         <Icon className="w-8 h-8 text-yellow-500" variant={variant} />
         <span className="text-gray-600 font-medium">{label}</span>
       </div>
-      <div className="text-3xl font-bold text-gray-500">{price}</div>
+      <div className="text-3xl font-bold text-gray-800">{price}</div>
     </div>
   );
 };
@@ -17,7 +17,7 @@ const PriceRow = ({ icon: Icon, label, price , variant}) => {
 const PricesCard = ({ prices }) => {
   return (
     <div className="bg-white rounded-lg shadow p-6">
-      <h2 className="text-xl font-semibold mb-6 text-gray-500">Prices</h2>
+      <h2 className="text-4xl font-semibold mb-6 text-gray-800">Prices</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {prices.map((item, index) => (
           <div

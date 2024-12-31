@@ -18,7 +18,7 @@ const ChartWrapper = ({ icon: Icon, title, subtitle, data }) => {
               variant="branded"
             />
           </div>
-          <div className="flex items-center space-x-1 mt-2">
+          <div className="flex items-center space-x-1  mt-4">
             <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
             <span className="text-gray-700 font-medium">{title}</span>
           </div>
@@ -28,47 +28,18 @@ const ChartWrapper = ({ icon: Icon, title, subtitle, data }) => {
   );
 };
 
-
 const MarketPerformance = ({ BTC, marketPerformanceValues }) => {
+  const percentageChange = (
+    ((BTC.current_price - BTC.price_24h_ago) / BTC.current_price) *
+    100
+  ).toFixed(2);
+
+  // Customize title and subtitle as HTML
   const chartData = {
-    title: "General performance of market",
-    subtitle: BTC.current_price,
-    percentageChange: (
-      ((BTC.current_price - BTC.price_24h_ago) / BTC.current_price) *
-      100
-    ).toFixed(2),
-    // categories: [
-    //   "00:00",
-    //   "03:00",
-    //   "06:00",
-    //   "09:00",
-    //   "12:00",
-    //   "15:00",
-    //   "18:00",
-    //   "21:00",
-    // ],
-    series: Object.values(marketPerformanceValues)
-    
-    // [
-    //   {
-    //     name: "Bitcoin",
-    //     data: [0, 1, 2, -1, 1, 0.5, 1.2, 2],
-    //     color: "#3b82f6",
-    //     lineWidth: 3,
-    //   },
-    //   {
-    //     name: "alt",
-    //     data: [0, 0.5, 1.5, -0.8, 0.7, 0.3, 1, 1.5],
-    //     color: "#d1d5db",
-    //     lineWidth: 1,
-    //   },
-    //   {
-    //     name: "pie",
-    //     data: [0, -0.5, 1.2, -1, 0.5, -0.2, 0.8, 1.2],
-    //     color: "#d1d5db",
-    //     lineWidth: 1,
-    //   },
-    // ],
+    title: `<strong style="font-size:24px;">Bitcoin Market Performance</strong>`,
+    subtitle: `<span><b>$${BTC.current_price}</b></span>`,
+    percentageChange,
+    series: Object.values(marketPerformanceValues),
   };
 
   return (

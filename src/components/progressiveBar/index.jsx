@@ -1,10 +1,7 @@
-import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { TokenIcon } from "@web3icons/react";
-import { SiBlockchaindotcom } from "react-icons/si";
 import { BsCircleFill } from "react-icons/bs";
-import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 
 // Progress Bar Component
 const ProgressBar = ({ bitcoin, altcoins, other }) => {
@@ -26,15 +23,15 @@ const ProgressBar = ({ bitcoin, altcoins, other }) => {
     },
     series: [
       {
-        data: [other],
+        data: [Number(other)],
         color: "#e5e7eb", // Other - gray
       },
       {
-        data: [altcoins],
+        data: [Number(altcoins)],
         color: "#2563eb", // Altcoins - blue
       },
       {
-        data: [bitcoin],
+        data: [Number(bitcoin)],
         color: "#f59e0b", // Bitcoin - amber
       },
     ],
