@@ -24,13 +24,21 @@ const MiniChart = ({ positive }) => {
     series: [
       {
         data: [1, 2, 3, 2, 3, 4, 3, 4],
-        color: positive ? "#22c55e" : "#ef4444", // green or red
+        color: positive ? "#22c55e" : "#ef4444", // Line color
+        fillColor: {
+          linearGradient: [0, 0, 0, 1],
+          stops: [
+            [0, positive ? "rgba(34, 197, 94, 0.4)" : "rgba(239, 68, 68, 0.4)"], // Light area
+            // [1, "transparent"], // Fade to transparent
+          ],
+        },
+        lineColor: positive ? "#22c55e" : "#ef4444", // Dark border color
+        lineWidth: 2,
       },
     ],
     legend: {
       enabled: false,
     },
-  
     credits: {
       enabled: false,
     },
@@ -39,7 +47,6 @@ const MiniChart = ({ positive }) => {
     },
     plotOptions: {
       series: {
-        lineWidth: 2,
         marker: {
           enabled: false,
         },
