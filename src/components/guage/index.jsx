@@ -1,7 +1,8 @@
 import React from "react";
 
-const FearGreedGauge = ({ value = 70, change = 7.5 }) => {
+const FearGreedGauge = ({ value, prev, change = 7.5 }) => {
   // Map value to degrees (0 to 180 for half-circle)
+  const changeInPercentage = (((value - prev)/value) * 100).toFixed(2);
   const calculateArc = (start, end) => {
     const startAngle = (start / 100) * 180;
     const endAngle = (end / 100) * 180;
@@ -33,7 +34,7 @@ const FearGreedGauge = ({ value = 70, change = 7.5 }) => {
           <div className="text-gray-500">Last 24h</div>
           <div className="flex items-center mt-1">
             <span className="mr-1">▲</span>
-            <span className="font-medium">{change}%</span>
+            <span className="font-medium">{changeInPercentage}%</span>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
 
-const AltseasonIndex = ({ values = [100, 100, 80] }) => {
+const AltseasonIndex = ({altSeason, values = [100, 100, 80] }) => {
   const [red, orange, green] = values;
   const max = Math.max(...values);
 
@@ -14,7 +14,7 @@ const AltseasonIndex = ({ values = [100, 100, 80] }) => {
           </h2>
 
           <span className="text-4xl font-bold text-gray-800 mt-5">
-            {Number(values.reduce((a, b) => a + b))}
+            {altSeason}
             <span className="text-gray-400 text-xl">/100</span>
           </span>
         </div>
