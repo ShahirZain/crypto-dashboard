@@ -2,13 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-     fontFamily: {
-      sans: [ 'sans-serif']
+    fontFamily: {
+      sans: ["Poppins"],
     },
     extend: {
-      colors:{
-        base_gray: '#F2F3F6'
-      }
+      colors: {
+        base_gray: "#F2F3F6",
+      },
     },
   },
   plugins: [],

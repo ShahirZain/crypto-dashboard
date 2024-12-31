@@ -54,7 +54,7 @@ const FearGreedGauge = ({ value, prev, change = 7.5 }) => {
           <path
             d={calculateArc(0, 30)}
             fill="none"
-            stroke="#ef4444"
+            stroke="#F04437"
             strokeWidth="16"
             strokeLinecap="round"
           />
@@ -62,7 +62,7 @@ const FearGreedGauge = ({ value, prev, change = 7.5 }) => {
           <path
             d={calculateArc(35, 65)}
             fill="none"
-            stroke="#f59e0b"
+            stroke="#F79007"
             strokeWidth="16"
             strokeLinecap="round"
           />
@@ -70,7 +70,7 @@ const FearGreedGauge = ({ value, prev, change = 7.5 }) => {
           <path
             d={calculateArc(70, 85)}
             fill="none"
-            stroke="#10b981"
+            stroke="#15B269"
             strokeWidth="16"
             strokeLinecap="round"
           />

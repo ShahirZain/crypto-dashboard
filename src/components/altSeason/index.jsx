@@ -9,7 +9,7 @@ const AltseasonIndex = ({altSeason, values = [100, 100, 80] }) => {
     <div className="  p-6 bg-white rounded-lg shadow-lg flex flex-col w-full lg:justify-around md:justify-around">
       <div className="flex justify-between items-start mb-4">
         <div className="flex flex-col">
-          <h2 className="text-2xl font-semibold text-gray-500 font-sans" >
+          <h2 className="text-2xl font-semibold text-gray-500 font-sans">
             Altseason index
           </h2>
 
@@ -32,7 +32,7 @@ const AltseasonIndex = ({altSeason, values = [100, 100, 80] }) => {
             className="absolute top-0 left-0 h-4 rounded-full"
             style={{
               width: `${red}%`,
-              backgroundColor: red === 0 ? "transparent" : "#EF4444",
+              backgroundColor: red === 0 ? "transparent" : "#F04437",
             }}
           ></div>
           {red === max && (
@@ -50,7 +50,7 @@ const AltseasonIndex = ({altSeason, values = [100, 100, 80] }) => {
             className="absolute top-0 left-0 h-4 rounded-full"
             style={{
               width: `${orange}%`,
-              backgroundColor: orange === 0 ? "transparent" : "#F59E0B",
+              backgroundColor: orange === 0 ? "transparent" : "#F79007",
             }}
           ></div>
           {orange === max && (
@@ -61,14 +61,14 @@ const AltseasonIndex = ({altSeason, values = [100, 100, 80] }) => {
         {/* Green Bar */}
         <div className="relative w-full">
           <div
-            className="h-4 rounded-full bg-gray-200"
+            className="h-4 rounded-full bg-[#E3E7EB]"
             style={{ width: "100%" }}
           ></div>
           <div
             className="absolute top-0 left-0 h-4 rounded-full"
             style={{
               width: `${green}%`,
-              backgroundColor: green === 0 ? "transparent" : "#10B981",
+              backgroundColor: green === 0 ? "transparent" : "#15B269",
             }}
           ></div>
           <div

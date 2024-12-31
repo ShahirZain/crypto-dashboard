@@ -150,12 +150,13 @@ const Dashboard = () => {
         <CryptoCard title="Top Losers" data={losers} positive={false} />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center mt-4 gap-4">
         <DominationCard
           bitcoin={DominationCardMock.bitcoin}
           altcoins={DominationCardMock.altcoins}
           other={DominationCardMock.other}
         />
+        <div className="w-full bg-[#fff] h-full rounded-md shadow-md"></div>
       </div>
 
       {/* Responsive Prices Card */}

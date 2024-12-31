@@ -24,15 +24,15 @@ const ProgressBar = ({ bitcoin, altcoins, other }) => {
     series: [
       {
         data: [Number(other)],
-        color: "#e5e7eb", // Other - gray
+        color: "#D0D5DD", // Other - gray
       },
       {
         data: [Number(altcoins)],
-        color: "#2563eb", // Altcoins - blue
+        color: "#2970FF", // Altcoins - blue
       },
       {
         data: [Number(bitcoin)],
-        color: "#f59e0b", // Bitcoin - amber
+        color: "#f7921A", // Bitcoin - amber
       },
     ],
     plotOptions: {
@@ -69,7 +69,7 @@ const DominationRow = ({
     <div className="flex flex-col items-center text-center">
       <div className="flex items-center space-x-2">
         <Icon
-          className="w-6 h-6 text-yellow-500"
+          className="w-6 h-6 text-[#D0D5DD]"
           symbol={symbol}
           variant={variant}
         />
