@@ -8,7 +8,7 @@ const ProgressBar = ({ bitcoin, altcoins, other }) => {
   const options = {
     chart: {
       type: "bar",
-      height: 40,
+      height: 35, // Reduced height
       backgroundColor: "transparent",
     },
     title: {
@@ -38,7 +38,7 @@ const ProgressBar = ({ bitcoin, altcoins, other }) => {
     plotOptions: {
       series: {
         stacking: "percent",
-        pointWidth: 30,
+        pointWidth: 15, // Reduced width
       },
     },
     credits: {
@@ -66,22 +66,18 @@ const DominationRow = ({
   variant,
 }) => {
   return (
-    <div className="flex flex-col items-center text-center">
-      <div className="flex items-center space-x-2">
+    <div className="flex flex-col items-center text-center space-y-1">
+      <div className="flex items-center space-x-1">
         <Icon
-          className="w-6 h-6 text-[#D0D5DD]"
+          className="w-4 h-4 text-[#D0D5DD]"
           symbol={symbol}
           variant={variant}
         />
-        <span className="text-gray-700 font-medium text-sm sm:text-base">
-          {label}
-        </span>
+        <span className="text-gray-700 font-medium text-xs">{label}</span>
       </div>
-      <div className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-400 mt-2 sm:mt-4">
-        {value}%
-      </div>
+      <div className="text-lg font-bold text-gray-400">{value}%</div>
       <div
-        className={`flex items-center text-xs sm:text-sm ${
+        className={`flex items-center text-xs ${
           positive ? "text-green-500" : "text-red-500"
         }`}
       >
@@ -95,11 +91,11 @@ const DominationRow = ({
 // Domination Card Component
 const DominationCard = ({ bitcoin, altcoins, other }) => {
   return (
-    <div className="bg-white rounded-lg shadow p-4 sm:p-6 w-full">
-      <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-500 text-center sm:text-left">
+    <div className="bg-white rounded-lg shadow p-2 w-full max-h-[165px]">
+      <h2 className="text-sm font-semibold mb-2 text-gray-500 text-left">
         Domination
       </h2>
-      <div className="flex flex-col sm:flex-row justify-around gap-6 mb-6">
+      <div className="flex justify-around items-center mb-2">
         <DominationRow
           icon={TokenIcon}
           label="Bitcoin"
@@ -126,7 +122,7 @@ const DominationCard = ({ bitcoin, altcoins, other }) => {
           positive={other.positive}
         />
       </div>
-      <div className="w-full max-w-2xl mx-auto">
+      <div className="w-full">
         <ProgressBar
           bitcoin={bitcoin.value}
           altcoins={altcoins.value}

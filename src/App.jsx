@@ -115,53 +115,60 @@ const marketPerformanceValues = Object.fromEntries(
 const Dashboard = () => {
 
   return (
-    <div className="flex flex-col !bg-base_gray w-screen h-full p-4 !font-sans">
-      <div className="flex justify-between p-4 w-full">
-        <p className="font-semibold text-gray-800 text-2xl">
-          Daily Market Overview
-        </p>
-        <p className="text-gray-800 flex items-center">
-          <CiCalendar className="text-lg" />
-          <span className="ml-2 font-semibold">
-            {moment().format("DD MMM YYYY")}
-          </span>
-        </p>
-      </div>
+    <div className=" !bg-base_gray w-screen h-full p-4 !font-sans">
+      {/* Container max-width adjusted to fit within 595px */}
+      <div className="max-w-[595px] mx-auto">
+        {/* Header */}
+        <div className="flex justify-between p-2 w-full">
+          <p className="font-semibold text-gray-800 text-xl">
+            Daily Market Overview
+          </p>
+          <p className="text-gray-800 flex items-center text-sm">
+            <CiCalendar className="text-lg" />
+            <span className="ml-2 font-semibold">
+              {moment().format("DD MMM YYYY")}
+            </span>
+          </p>
+        </div>
 
-      <MarketPerformance
-        BTC={MockMarketData.market_performance.btc}
-        marketPerformanceValues={marketPerformanceValues}
-      />
-
-      {/* Responsive Grid for Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <AltseasonIndexCard
-          altSeason={MockMarketData.market_indexes.altseason}
+        {/* Market Performance Section */}
+        <MarketPerformance
+          BTC={MockMarketData.market_performance.btc}
+          marketPerformanceValues={marketPerformanceValues}
         />
-        <FearGreedCard
-          value={MockMarketData.market_indexes.fear_and_greed.current}
-          prev={MockMarketData.market_indexes.fear_and_greed.previous}
-          max={100}
-        />
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <CryptoCard title="Top Gainers" data={gainers} positive={true} />
-        <CryptoCard title="Top Losers" data={losers} positive={false} />
-      </div>
+        {/* Cards Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <AltseasonIndexCard
+            altSeason={MockMarketData.market_indexes.altseason}
+          />
+          <FearGreedCard
+            value={MockMarketData.market_indexes.fear_and_greed.current}
+            prev={MockMarketData.market_indexes.fear_and_greed.previous}
+            max={100}
+          />
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center mt-4 gap-4">
-        <DominationCard
-          bitcoin={DominationCardMock.bitcoin}
-          altcoins={DominationCardMock.altcoins}
-          other={DominationCardMock.other}
-        />
-        <div className="w-full bg-[#fff] h-full rounded-md shadow-md"></div>
-      </div>
+        {/* Gainers and Losers Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <CryptoCard title="Top Gainers" data={gainers} positive={true} />
+          <CryptoCard title="Top Losers" data={losers} positive={false} />
+        </div>
 
-      {/* Responsive Prices Card */}
-      <div className="mt-8">
-        <PricesCard prices={pricesData} />
+        {/* Domination Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center mt-4 gap-4">
+          <DominationCard
+            bitcoin={DominationCardMock.bitcoin}
+            altcoins={DominationCardMock.altcoins}
+            other={DominationCardMock.other}
+          />
+          <div className="w-full bg-white h-full rounded-md shadow-md"></div>
+        </div>
+
+        {/* Prices Card Section */}
+        <div className="mt-6">
+          <PricesCard prices={pricesData} />
+        </div>
       </div>
     </div>
   );
