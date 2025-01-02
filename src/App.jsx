@@ -19,33 +19,40 @@ import {
   TokenPOND,
   TokenVPAD
 } from "@web3icons/react";
-
+import Bitcoin from "./assets/topGainer/bitcoin.png";
+import Doge from "./assets/topGainer/Doge.png";
+import Rune from "./assets/topGainer/RUne.png";
+import SGP from "./assets/topGainer/SGP.png";
+import XEC from "./assets/topGainer/XEC.png";
+import GoldCoin from "./assets/goldcoin.png";
+import Eth from "./assets/ethereum-eth-logo.png";
+import sp500 from "./assets/sp500.png";
 import MockMarketData from "./mock/downloaded-market-data.json";
 
 function getIconForSymbol(symbol) {
   switch (symbol) {
     case "ATAUSDT":
-      return TokenBSV;
+      return Bitcoin;
     case "COOKIEUSDT":
-      return TokenETH;
+      return SGP;
     case "FUELUSDT":
-      return TokenRUNE;
+      return Rune;
     case "STEEMUSDT":
-      return TokenXEC;
+      return XEC;
     case "FMCUSDT":
-      return TokenOMNOM;
+      return Doge;
     case "PAXGUSDT":
-      return TokenPAXG;
+      return Bitcoin;
     case "WRXUSDT":
-      return TokenDSETH;
+      return Bitcoin;
     case "AKROUSDT":
-      return TokenKAR;
+      return SGP;
     case "AKIUSDT":
-      return TokenKAI;
+      return Rune;
     case "PONDUSDT":
-      return TokenPOND;
+      return XEC;
     case "VPADUSDT":
-      return TokenVPAD;
+      return Doge;
     default:
       return TokenBSV;
   }
@@ -59,6 +66,7 @@ const gainers = MockMarketData.top_coins.top_gainers.map((gainer) => ({
   variant: "branded",
 
 }));
+
 
 const losers = MockMarketData.top_coins.top_losers.map((loser) => ({
   icon: getIconForSymbol(loser.symbol),
@@ -98,16 +106,18 @@ const DominationCardMock = {
 
 
 
-const pricesData = Object.entries(MockMarketData.other_markets).map(([key, value]) => ({
-  icon: {
-    eth: TokenETH,
-    sp500: TokenDSETH,
-    gold: TokenPAXG,
-  }[key],
-  label: key.toUpperCase(),
-  price: `$${value.current.toFixed(2)}`,
-  variant: "branded",
-}));
+const pricesData = Object.entries(MockMarketData.other_markets).map(
+  ([key, value]) => ({
+    icon: {
+      eth: Eth,
+      sp500: sp500,
+      gold: GoldCoin,
+    }[key],
+    label: key.toUpperCase(),
+    price: `$${value.current.toFixed(2)}`,
+    variant: "branded",
+  })
+);
 
 const marketPerformanceValues = Object.fromEntries(
   Object.entries(MockMarketData.market_performance.top_pairs).map(([key, values]) => [key, {data:values.flat(), name:key}])
@@ -115,17 +125,17 @@ const marketPerformanceValues = Object.fromEntries(
 const Dashboard = () => {
 
   return (
-    <div className=" !bg-base_gray w-screen h-full p-4 !font-sans">
+    <div className=" w-screen h-full  !font-sans">
       {/* Container max-width adjusted to fit within 595px */}
-      <div className="max-w-[595px] mx-auto">
+      <div className="max-w-[595px] mx-auto !bg-base_gray p-2">
         {/* Header */}
         <div className="flex justify-between p-2 w-full">
-          <p className="leading-4 text-gray-800 text-xl font-semibold">
+          <p className="leading-4 text-[#182230] text-[16px] font-semibold">
             Daily Market Overview
           </p>
-          <p className="text-gray-800 flex items-center text-sm">
+          <p className="text-gray-800 flex items-center text-[12px]">
             <CiCalendar className="text-lg" />
-            <span className="ml-2 font-semibold">
+            <span className="ml-2 font-semibold -mb-[2px] text-[12px]">
               {moment().format("DD MMM YYYY")}
             </span>
           </p>
