@@ -28,6 +28,7 @@ import GoldCoin from "./assets/goldcoin.png";
 import Eth from "./assets/ethereum-eth-logo.png";
 import sp500 from "./assets/sp500.png";
 import MockMarketData from "./mock/downloaded-market-data.json";
+console.log("🚀 ~ MockMarketData:", MockMarketData)
 
 function getIconForSymbol(symbol) {
   switch (symbol) {
@@ -127,16 +128,16 @@ const Dashboard = () => {
   return (
     <div className=" w-screen h-full  !font-sans">
       {/* Container max-width adjusted to fit within 595px */}
-      <div className="max-w-[595px] mx-auto !bg-base_gray p-2">
+      <div className="max-w-[595px] mx-auto !bg-base_gray p-4">
         {/* Header */}
         <div className="flex justify-between p-2 w-full">
           <p className="leading-4 text-[#182230] text-[16px] font-semibold">
             Daily Market Overview
           </p>
-          <p className="text-gray-800 flex items-center text-[12px]">
-            <CiCalendar className="text-lg" />
-            <span className="ml-2 font-semibold -mb-[2px] text-[12px]">
-              {moment().format("DD MMM YYYY")}
+          <p className="text-[#182230] flex items-center text-[12px] font-sans font-[500]">
+            <CiCalendar className="text-lg text-[#182230]" />
+            <span className="ml-2 font-[500] -mb-[2px] text-[12px] font-sans leading-[18px] text-[#182230]">
+              {moment("28 June 2024").format("DD MMMM YYYY")}
             </span>
           </p>
         </div>
@@ -172,7 +173,7 @@ const Dashboard = () => {
             altcoins={DominationCardMock.altcoins}
             other={DominationCardMock.other}
           />
-          <div className="w-full bg-white h-full rounded-md shadow-md"></div>
+          <div className="w-full bg-white h-full rounded-md"></div>
         </div>
 
         {/* Prices Card Section */}

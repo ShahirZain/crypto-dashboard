@@ -114,7 +114,7 @@ const CryptoRow = ({
 // Card Component
 const CryptoCard = ({ title, data, positive }) => {
   return (
-    <div className="bg-white rounded-lg shadow p-4 max-h-[1130px] overflow-y-auto">
+    <div className="bg-white rounded-lg  p-4 max-h-[1130px] overflow-y-auto">
       <div className="flex justify-between mb-4">
         <h2 className="text-[12px] leading-4 font-semibold text-[#667085]">
           {title}

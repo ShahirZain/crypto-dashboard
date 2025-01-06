@@ -105,7 +105,7 @@ const DominationRow = ({
 // Domination Card Component
 const DominationCard = ({ bitcoin, altcoins, other }) => {
   return (
-    <div className="bg-white rounded-lg shadow p-2 w-full max-h-[165px]">
+    <div className="bg-white rounded-lg  p-2 w-full max-h-[165px]">
       <h2 className="text-[12px] font-semibold mb-2 text-[#667085] text-left leading-4 p-2">
         Domination
       </h2>

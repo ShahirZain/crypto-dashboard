@@ -25,7 +25,7 @@ const FearGreedGauge = ({ value, prev }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full bg-white rounded-lg shadow p-6 max-h-[133px]">
+    <div className="flex flex-col items-center justify-center w-full bg-white rounded-lg  p-6 max-h-[133px]">
       <div className="flex justify-between w-full ">
         <h2 className="text-[12px]  font-semibold leading-[18px] text-[#667085]">
           Fear & Greed Index
