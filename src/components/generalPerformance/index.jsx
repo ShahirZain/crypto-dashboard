@@ -32,9 +32,9 @@ const MarketPerformance = ({ BTC, marketPerformanceValues }) => {
     <div className="bg-white border-color-[#E4E7EC] rounded-md border p-2 h-[303px]">
       <div className="px-2">
         <div className="flex items-center justify-between w-full">
-          <strong className="text-lg font-sans text-[#667085] font-semibold leading-[18px]">
+          <span className="text-lg font-sans text-[#667085] !font-semibold leading-[18px]">
             General performance of market
-          </strong>
+          </span>
           <img src={BitcoinIcon} alt="Bitcoin" className="w-6 h-6" />
         </div>
         <div className="flex items-center justify-between w-full">
@@ -50,7 +50,9 @@ const MarketPerformance = ({ BTC, marketPerformanceValues }) => {
             <span className="text-[#17B26A] text-[12px] leading-4 font-semibold font-sans ml-2">
               ▲
             </span>{" "}
-            <span className="text-[#17B26A] font-sans text-[12px]">{percentageChange}%</span>
+            <span className="text-[#17B26A] font-sans text-[12px]">
+              {percentageChange}%
+            </span>
           </p>
           <p
             className="text-[16px] text-[#6b7280] font-normal flex align-center items-center"

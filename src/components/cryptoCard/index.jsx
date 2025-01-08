@@ -27,7 +27,7 @@ const MiniChart = ({ positive }) => {
     },
     series: [
       {
-        data: [1, 2, 5, 2, 4, 7, 3, 4], // Sample data
+        data: [1,6, 3, 8, 1,5, 7, 5 , 15,1, 10, 7], // Sample data
         color: positive ? "#22c55e" : "#ef4444", // Line color based on positive/negative
         fillColor: {
           linearGradient: {

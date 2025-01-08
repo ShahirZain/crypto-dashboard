@@ -10,7 +10,7 @@ const PriceRow = ({ icon: Icon, label, price, variant }) => {
           {label}
         </span>
       </div>
-      <div className="text-[16px] leading-4 font-bold text-[#182230] pb-4">
+      <div className="text-[16px] leading-4 font-semibold text-[#182230] pb-4">
         {price}
       </div>
     </div>
