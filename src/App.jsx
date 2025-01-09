@@ -60,17 +60,18 @@ function getIconForSymbol(symbol) {
 }
 
 const gainers = MockMarketData.top_coins.top_gainers.map((gainer) => ({
-  icon: getIconForSymbol(gainer.symbol),
-  name: gainer.symbol, 
+  icon: gainer.icon,
+  exchangeIcon: gainer.exchange_icon,
+  name: gainer.symbol,
   value: `$${gainer.price.toFixed(8)}`,
   percentage: gainer.change,
   variant: "branded",
-
 }));
 
 
 const losers = MockMarketData.top_coins.top_losers.map((loser) => ({
-  icon: getIconForSymbol(loser.symbol),
+  icon: loser.icon,
+  exchangeIcon: loser.exchange_icon,
   name: loser.symbol,
   value: `$${loser.price.toFixed(8)}`,
   percentage: loser.change.toFixed(2),

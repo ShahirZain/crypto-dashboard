@@ -78,13 +78,19 @@ const CryptoRow = ({
   percentage,
   positive,
   variant,
-  idx
+  idx,
+  exchangeIcon,
 }) => {
   return (
-    <div className={`flex items-center justify-between py-2 border-b border-gray-200 mb-4 last-card${idx}`}>
+    <div
+      className={`flex items-center justify-between py-2 border-b border-gray-200 mb-4 last-card${idx}`}
+    >
       <div className="flex flex-col items-start justify-start">
         {/* <Icon className="w-8 h-8 text-yellow-500" variant={variant} /> */}
-        <img src={Icon} />
+        <div className="relative">
+          <img src={Icon} className="rounded-full " />
+          <img src={exchangeIcon} className="absolute w-5 h-5 rounded-full -right-2 bottom-[10%]" />
+        </div>
         <div className="text-[#475467] font-sans text-sm mt-1 font-semibold leading-4">
           {name}
         </div>
@@ -130,6 +136,7 @@ const CryptoCard = ({ title, data, positive }) => {
           positive={positive}
           variant={item.variant}
           idx={index}
+          exchangeIcon={item.exchangeIcon}
         />
       ))}
     </div>

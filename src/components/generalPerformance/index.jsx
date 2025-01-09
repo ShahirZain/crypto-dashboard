@@ -32,7 +32,7 @@ const MarketPerformance = ({ BTC, marketPerformanceValues }) => {
     <div className="bg-white border-color-[#E4E7EC] rounded-md border p-2 h-[303px]">
       <div className="px-2">
         <div className="flex items-center justify-between w-full">
-          <span className="text-lg font-sans text-[#667085] !font-semibold leading-[18px]">
+          <span className="text-[12px] font-sans text-[#667085] !font-semibold leading-[18px]">
             General performance of market
           </span>
           <img src={BitcoinIcon} alt="Bitcoin" className="w-6 h-6" />
